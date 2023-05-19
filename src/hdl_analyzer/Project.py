@@ -28,17 +28,17 @@ class Project():
     if "languages" in json_data:
       languages_data = json_data["languages"]
     self.langs = {
-      "verilog" : ProjectLanguage.Verilog.Verilog(languages_data, directory, "verilog"),
-      "systemverilog" : ProjectLanguage.SystemVerilog.SystemVerilog(languages_data, directory, "systemverilog"),
-      "vhdl" : ProjectLanguage.VHDL.VHDL(languages_data, directory, "vhdl")
+      "verilog" : ProjectLanguage.Verilog.Verilog(languages_data, directory, "verilog", debug),
+      "systemverilog" : ProjectLanguage.SystemVerilog.SystemVerilog(languages_data, directory, "systemverilog", debug),
+      "vhdl" : ProjectLanguage.VHDL.VHDL(languages_data, directory, "vhdl", debug)
     }
   
   def clear(self):
     json_data = {}
     self.langs = {
-      "verilog" : ProjectLanguage.Verilog.Verilog(json_data, self.directory, "verilog"),
-      "systemverilog" : ProjectLanguage.SystemVerilog.SystemVerilog(json_data, self.directory, "systemverilog"),
-      "vhdl" : ProjectLanguage.VHDL.VHDL(json_data, self.directory, "vhdl")
+      "verilog" : ProjectLanguage.Verilog.Verilog(json_data, self.directory, "verilog", self.debug),
+      "systemverilog" : ProjectLanguage.SystemVerilog.SystemVerilog(json_data, self.directory, "systemverilog", self.debug),
+      "vhdl" : ProjectLanguage.VHDL.VHDL(json_data, self.directory, "vhdl", self.debug)
     }
     
   def add_file(self, file_name):
@@ -95,4 +95,8 @@ class Project():
   def analyze(self, analyzer):
     for lang in self.langs:
       self.langs[lang].analyze(analyzer)
+
+  def preprocess(self, out_dir):
+    for lang in self.langs:
+      self.langs[lang].preprocess(out_dir)
 

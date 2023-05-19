@@ -1,0 +1,24 @@
+{
+  "directory": "/home/scst/src/hdl_analyzer/tests",
+  "languages": {
+    "verilog": {
+      "files": [
+        "verilog_preprocess_dos/top.v"
+      ],
+      "includes": [
+        "verilog_preprocess_dos"
+      ],
+      "defines": []
+    },
+    "systemverilog": {
+      "files": [],
+      "includes": [],
+      "defines": []
+    },
+    "vhdl": {
+      "files": [],
+      "includes": [],
+      "defines": []
+    }
+  }
+}

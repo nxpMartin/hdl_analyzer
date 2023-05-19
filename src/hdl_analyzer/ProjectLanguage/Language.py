@@ -2,12 +2,16 @@
 import os
 
 class ProjectLanguage():
-  def __init__(self, json_data, directory, language):
+  def __init__(self, json_data, directory, language, debug):
     self.files = []
     self.includes = []
     self.defines = []
     
     self.file_extensions = []
+    
+    self.debug = debug
+    
+    self.directory = directory
     
     if language in json_data:
       language_data = json_data[language]
@@ -58,5 +62,7 @@ class ProjectLanguage():
     return out_dict
 
   def analyze(self, analyzer):
+    pass
+  def preprocess(self, out_dir):
     pass
 
